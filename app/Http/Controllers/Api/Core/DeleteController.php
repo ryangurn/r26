@@ -13,7 +13,7 @@ class DeleteController extends ModelController
     }
 
     public function delete($delete_id){
-
+        $this->injectData(['delete_id' => $delete_id]);
         // Validation
         $validator = validator($this->request->all(), $this->model->D_validator);
 

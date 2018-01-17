@@ -32,7 +32,11 @@ class ReadController extends ModelController
     }
 
     public function all(){
-        $model = $this->model::all();
+        if($this->request->exists('trashed')) {
+            $model = $this->model::withTrashed()->get();
+        }else{
+            $model = $this->model::all();
+        }
 
         if($model == null){
             return response()->json([

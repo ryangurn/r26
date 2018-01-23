@@ -28,5 +28,10 @@ $api->version('v1', function (Router $api) {
         $api->get('/{id}', 'App\\Http\\Controllers\\Api\\UserController@read');
         $api->post('/{id}', 'App\\Http\\Controllers\\Api\\UserController@update');
         $api->delete('/{id}', 'App\\Http\\Controllers\\Api\\UserController@delete');
+    $api->group(['prefix' => 'availability'], function(Router $api){
+        $api->post('/', 'App\\Http\\Controllers\\Api\\UserController@availabilityCreate');
+        $api->get('/{id}', 'App\\Http\\Controllers\\Api\\UserController@availabilityRead');
+        $api->post('/{id}', 'App\\Http\\Controllers\\Api\\UserController@availabilityUpdate');
+        $api->get('/delete/{id}', 'App\\Http\\Controllers\\Api\\UserController@availabilityDelete');
     });
 });

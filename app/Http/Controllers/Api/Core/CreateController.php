@@ -12,8 +12,10 @@ class CreateController extends ModelController
         parent::__construct($model, $request);
     }
 
-    public function create(){
+    public function create($injects = []){
         // Validation
+        $this->injectData($injects);
+
         $validator = validator($this->request->all(), $this->model->CRU_validator);
 
         if($validator->fails()){

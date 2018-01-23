@@ -41,6 +41,10 @@ class User extends Authenticatable
     ];
 
     public $D_validator = [
-        'user_id' => 'required|integer|exists:rounds,id'
+        'delete_id' => 'required|integer|exists:users,id'
     ];
+
+    public function availability(){
+        return $this->hasMany(UserAvailability::class);
+    }
 }
